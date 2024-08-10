@@ -7,7 +7,12 @@ const allowedOrigins = process.env.CORS_ORIGIN.split(',');
 console.log(allowedOrigins);
 const app = express();
 app.use(express.json());
-app.use(cors({
+// app.use(cors({
+//   origin: allowedOrigins,
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true
+// }));
+app.options('*', cors({
   origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
