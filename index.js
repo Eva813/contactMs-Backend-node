@@ -3,11 +3,11 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import './config/db.js';
 import { Router } from './routes/routes.js';
-
+const allowedOrigins = process.env.CORS_ORIGIN.split(',');
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: ["https://contact-ms-fronted-react.vercel.app/"],
+  origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
