@@ -16,11 +16,25 @@ app.use(express.json());
 //   methods: ["GET", "POST", "PUT", "DELETE"],
 //   credentials: true
 // }));
+const allowedOrigins = ['https://contact-ms-fronted-react.vercel.app', 'http://localhost:5173'];
 app.use(cors({
-  origin: ['https://contact-ms-fronted-react.vercel.app', 'http://localhost:5173'],
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+// Handle OPTIONS preflight request
+app.options('*', cors());
+// app.use(cors({
+//   origin: ['https://contact-ms-fronted-react.vercel.app', 'http://localhost:5173'],
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true
+// }));
 
 
 //  Express 中的一個方法，用來將Middleware綁定到應用程序
