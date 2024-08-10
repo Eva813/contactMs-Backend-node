@@ -4,6 +4,7 @@ import cors from 'cors';
 import './config/db.js';
 import { Router } from './routes/routes.js';
 const allowedOrigins = process.env.CORS_ORIGIN.split(',');
+console.log(allowedOrigins);
 const app = express();
 app.use(express.json());
 app.use(cors({
