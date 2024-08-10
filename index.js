@@ -6,8 +6,8 @@ import { Router } from './routes/routes.js';
 
 // 從名為 config.env 的文件中加載環境變數到 process.env 中。這個文件通常包含敏感信息，例如 API 金鑰、數據庫 URL , port 等。
 dotenv.config({ path: './config.env' })
-const allowedOrigins = process.env.CORS_ORIGIN.split(',');
-console.log(allowedOrigins);
+// const allowedOrigins = process.env.CORS_ORIGIN.split(',');
+// console.log(allowedOrigins);
 const app = express();
 app.use(express.json());
 
@@ -17,7 +17,7 @@ app.use(express.json());
 //   credentials: true
 // }));
 app.use(cors({
-  origin: '*',
+  origin: ['https://contact-ms-fronted-react.vercel.app', 'http://localhost:5173'],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
